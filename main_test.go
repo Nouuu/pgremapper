@@ -965,6 +965,7 @@ func teardownTest(t *testing.T) {
 	savedOsdPoolsDetails = nil
 	savedParsedOsdTree = nil
 	savedPgDumpPgsBrief = nil
+	savedPgUpmapItemMap = nil
 
 	runOsdDump = nil
 	runOsdPoolLs = nil

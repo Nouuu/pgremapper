@@ -521,7 +521,13 @@ func osdDump() *osdDumpOut {
 	return &out
 }
 
+var savedPgUpmapItemMap map[string]*pgUpmapItem
+
 func pgUpmapItemMap() map[string]*pgUpmapItem {
+	if savedPgUpmapItemMap != nil {
+		return savedPgUpmapItemMap
+	}
+
 	osdDumpOut := osdDump()
 
 	puis := make(map[string]*pgUpmapItem)
@@ -529,6 +535,7 @@ func pgUpmapItemMap() map[string]*pgUpmapItem {
 		puis[pui.PgID] = pui
 	}
 
+	savedPgUpmapItemMap = puis
 	return puis
 }
 
